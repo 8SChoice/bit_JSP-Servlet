@@ -1,0 +1,70 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>mailprocess.jsp</title>
+<%
+	//jsp내장함수
+	//request, response의 개념을 이해
+	//request(요청)->HttpServletResponse
+	//response(응답)->HttpServletResponse
+	//요청한 정보를 출력
+	//Client의 아이피값을 밥환
+	String reip=request.getRemoteAddr();
+	System.out.println("reip"+reip);
+	//한글처리
+	request.setCharacterEncoding("euc-kr");
+	//나이 정수처리
+	int age=Integer.parseInt(request.getParameter("age"));
+%>
+<style>
+table{
+width:300px;}
+table>tbody>tr>td:nth-child(1){
+width:100px;
+background:orange;
+}
+#wrap{
+width:300px;
+margin:auto;
+}
+</style>
+</head>
+<body>
+<div id="wrap">
+	<table>
+		<tr>
+			<th colspan="2">메일링 리스트</th>
+		</tr>
+		<tr>
+			<td>이름</td>
+			<td><%=request.getParameter("name") %></td>
+		</tr>
+		<tr>
+			<td>이메일</td>
+			<td><%=request.getParameter("email") %></td>
+		</tr>
+		<tr>
+			<td>나이</td>
+			<td><%=age%></td>
+		</tr>
+		<tr>
+			<th colspan="2"><input type="button" value="가입폼" onclick="location='mailstdemo.jsp'"></th>
+		</tr>	
+	</table>
+	<br>
+	<table>
+	<%
+	for(int i=0; i<age; i++){
+	%>
+	<tr><td><%=i %></td></tr>
+	<%
+	}
+	%></table>
+	</div>
+
+
+</body>
+</html>
