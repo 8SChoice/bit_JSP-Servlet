@@ -6,11 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
-
 import DTO.MyMemberDTO;
 import conn.ConnDriver;
 

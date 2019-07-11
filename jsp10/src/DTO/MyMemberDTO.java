@@ -2,7 +2,7 @@ package DTO;
 
 public class MyMemberDTO {
 	private int num;
-	private String id, pwd, name, edate;
+	private String id, pwd, name, edate, zip, addr;
 	public int getNum() {
 		return num;
 	}
@@ -33,6 +33,19 @@ public class MyMemberDTO {
 	public void setEdate(String edate) {
 		this.edate = edate;
 	}
+	public String getZip() {
+		return zip;
+	}
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+	
 	
 
 }

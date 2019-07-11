@@ -5,14 +5,13 @@
 <mapper namespace="mymember">
 	<insert id="add" parameterType="mvo">
 		insert into mymember
-		values(mymember_seq.nextval,#{id},#{pwd},#{name},sysdate)
+		values(mymember_seq.nextval,#{id},#{pwd},#{name},sysdate,#{zip},#{addr})
 	</insert>
 	<select id="list" resultType="mvo">
-		select num, id, name,to_char(edate,'yyyy-mm-dd') edate from mymember order
+		select num, id, name,to_char(edate,'yyyy-mm-dd') edate, zip, addr from mymember order
 		by num desc
 	</select>
 	<select id="idcheck" resultType="int" parameterType="String">
-		select
-		count(*) count from mymember where id=#{id}
+		select count(*) from mymember where id=#{id}
 	</select>
 </mapper>
