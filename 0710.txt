@@ -1,0 +1,53 @@
+jar : java application re(순수한 자바)
+war : 
+1.
+2.객체 2개 생성 -HTTP Servlet Request          ->   4.doGet(), doPost()
+                                            Response              5.Service지속
+3.  -1.A Servlet 생성                                           6.destroy 자원해제
+     -2.init() 호출[서블릿 초기화]
+     -3.Service injection -> ******Thread에서 관리된다.*******
+
+jsp : 
+
+
+웹서버 : 요청오면 파일준다.(순수한 기능)
+
+server(was) : container(뭔가를 담을 수 있다.)
+
+Spring 개발방법 3가지
+1.
+2.Spring boot
+3.Clouding 방식
+
+이동방식
+redirect : 한 페이지에서 다른 페이지로 요청(자동 이동)
+	url변경, request 2번 response, request scope 초기화
+forward => Model설계 필수 이해.
+	url 유지, request 1번. request, request scope 사용
+	Scopeobject
+	page context = servlet config => 대상 서블릿 안에서만 사용할 수 있는 저장장소 ==private
+	request context => 두 서블릿의 관계에서만 쓸 수 있다. ==default
+	session context =>
+	servlet context => public
+
+서블릿은 컨트롤러 제작을 위해서만 사용. 뷰x
+
+Connection Pool : WAS가 가지고 있다.  DataSource**
+- JNDI(Java Naming and Directory Interface) : 이름을 갖고오겠다. ->was의 커넥션 풀에서. -> 그 가져오는것은 DataSource
+- DBCD
+
+1.서블릿 구조 이해
+2. 서블릿 라이프사이클 이해
+3. 이동방식 redirect, forward
+4. 4가지 scope
+	[ServletConfig(PageContextScope),
+	 RequestScope, SessionScope(HttpSession), ServletContext(application)]
+5. JNDI : Connection Pool(Context.xml 오버라이딩, DataSource의 개념)
+6. 기존의 자바수업에서 사용했던 Sawon테이블 select 한 내용을 web에서 동일하게 적용
+7. 연습문제) 회원가입을 위한 테이블을 설계
+	*회원테이블, 회원 마일리지테이블
+	<기능> 회원 한명이 가입일 될 때 마일리지값이 기본적으로 100포인트를 지급하는 형태
+	*오늘 구현한 로그인 프로그램을 회원테이블과 연동하기
+
+<산출물> ERD, Class Diagram, Source Code
+ 회원(회원번호, 아이디, 비밀번호, 이름, 가입날짜)

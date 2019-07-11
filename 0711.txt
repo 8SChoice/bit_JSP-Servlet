@@ -1,0 +1,40 @@
+Model 1 : DAO 와 DTO를 따로 설계
+1. servlet : UI처리x
+2. JSP : <%! %> : 재사용과는 거리가 멀다. => View.사용자에게 보여주기 위함.
+<% %> : Service(req,resp) : 재사용x
+
+DAO  --  My Batis -- MySQL
+              Spring        Oracle
+
+
+
+
+----------------------------------------------
+MyBatis : JDBC의 90프로의 코드를 줄여준다.
+               config.xml : 암묵적인 약속이다.
+
+config.xml(환경설정 핵심 xml파일) 안에
+transactionManager
+Connection       ->JNDI context.xml
+Mappers 관련 Resource  ->Mapper.xml에 SQL문을 쓴다.
+
+1.Resources ->2.Reader로 읽는다.->3.SQL session Factory(Factory디자인 패턴을 썼다. 라는 말)->4.SQL session을 얻어낸다.
+-> 5. 얻어낸 메소드로 SQL문 사용한다.
+
+
+Object Relational Mapping : 객체관계 Mapping 
+: 이름이 같으면 자동으로 매핑을 해준다.(프론트 - DTO - DB 구조에서).
+
+- property : Setter/Getter
+
+
+JQuery를 이용 : dom만을 대기한다.html만을 대기.(효율적). $선택자() : CSS의 개념을 이해하면 쉽다.
+#id : 한페이지에서 유일
+.class : 한페이지에서 중복 가능
+element : 태그요소 
+JS 이용 : 모든 리소스를 대기한다.
+
+AJAX
+-동기식 : 요청했으면 응답이 올때까지 기다린다.
+-비동기식 : 일부만 수정하고 싶을 때. callback함수가 응답을 받아주기 때문에 기다릴 필요가 없다. 
+*************JDBC 과정 다시 보기*************
