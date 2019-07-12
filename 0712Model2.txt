@@ -1,0 +1,12 @@
+EL(표기법)
+Model1 : JSP(View+Model). => 유지보수 힘듬
+
+Model2
+유지보수를 위해 분리.
+View(JSP) (EL, JSTL(제어코드) 을 사용하여 관리)
+    +
+Model(Java)
+
+EL : Model의 값을 View에서 표현하기 위한 언어
+
+컨트롤러(서블릿)은 하나여야한다.

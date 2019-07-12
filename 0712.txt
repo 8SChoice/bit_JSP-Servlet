@@ -1,0 +1,7 @@
+create table
+dto
+mybatis 라이브러리 등록
+mapper
+config.xml typeAlias 기타 등등 설정
+dao
+model처리(jsp)

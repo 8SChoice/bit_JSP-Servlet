@@ -1,0 +1,66 @@
+1. maven 프로젝트로 convert하고, maven repository에서 mybatis 다운로드 링크를 copy, pom.xml 파일의 </build>밑에 넣고 설치.
+
+2. oracle과 연결하기 위한 설정파일 context.xml을 META-INF에 넣어준다.
+<?xml version="1.0" encoding="UTF-8"?>
+<context>
+	<Resource
+		name="jdbc/javabook"
+		auth="Container"
+		type="javax.sql.DataSource"
+		driverClassName="oracle.jdbc.driver.OracleDriver"
+		url="jdbc:oracle:thin:@localhost:1521:xe"
+		username="javabook"
+		password="test00"
+		maxActive="20"
+		maxIdle="10"
+		maxWait="-1"
+		/>
+</context>
+
+3. config 패키지에 config.xml 파일 작성. dtd는 mybatis 홈페이지에서 복사한다.
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="dto.MemberDTO" alias="dto" />
+	</typeAliases>
+	<environments default="">
+		<environment id="">
+			<transactionManager type="JDBC"/>
+			<dataSource type="JNDI">
+				<property name="data_source"
+					value="java:comp/env/jdbc/javabook" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="mapper/member.xml" />
+	</mappers>
+</configuration>
+
+4. mapper 패키지에 member.xml 파일 작성. dtd는 mybatis 홈페이지에서 복사한다.
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="member">
+    <insert id="add" parameterType="dto">
+    insert into member values(member_seq.nextVal, #{id}, #{pwd}, #{name}, #{zipcode}, #{address}, #{postal}, sysdate)
+    </insert>
+    <select id="idcnt" parameterType="String" resultType="int">
+    select count(*) count from member where id = #{id}
+    </select>
+    <select id="list" resultType="dto">
+    select id, name, zipcode, address from member order by num desc
+    </select>
+    <select id="search" parameterType="String" resultType="dto">
+    select id, name, zipcode, address from member where name like %#{id}%
+    </select>
+    </mapper>
+
+5. service 패키지에 SqlSession을 얻기 위한 FactoryService를 작성. 싱글톤 처리 할 것.
+Reader로 config/config.xml 파일을 읽어 factory를 반환한다.
+
+6. DTO, DAO 작성. DAO는 싱글톤 처리 할 것.
