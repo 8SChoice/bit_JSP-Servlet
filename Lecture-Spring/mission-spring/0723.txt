@@ -1,0 +1,24 @@
+게시판(board)
+controller
+dao
+service : 여러개의 dao에 접근할 수 있도록 하는 비지니스 로직
+vo
+
+각각의 테이블마다 위의 것들이 다 필요하다.
+board	-controller
+	-dao
+	-service
+	-vo
+패키지구조 위와같이.
+너 게시판 만들어
+난 회원만들어
+넌 또 딴거 만들어...하고 플젝한다.
+kr.co.mlec.board.vo  BoardVO.java
+-------------------------------------------------
+회원
+controller
+dao
+service
+vo
+
+각각의 테이블마다 위의 것들이 다 필요하다.
